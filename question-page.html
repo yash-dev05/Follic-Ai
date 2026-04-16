@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hair Analysis Questionnaire</title>
+
+<style>
+
+body{
+margin:0;
+padding:0;
+background:#fcf5ec;
+font-family:"Inter",sans-serif;
+}
+
+/* NAVBAR */
+
+nav{
+background:#284432;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:75px;
+}
+
+.nav_bar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+width:80%;
+max-width:1200px;
+}
+
+ul{
+display:flex;
+list-style:none;
+margin:0;
+padding:0;
+font-size:17px;
+}
+
+ul li{
+margin:0 15px;
+position:relative;
+}
+
+ul li a{
+color:white;
+text-decoration:none;
+}
+
+ul li:hover{
+color:#fdfdb0cf;
+}
+
+ul li::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-6px;
+width:0%;
+height:2px;
+background:#c49d50;
+transition:width .3s;
+}
+
+ul li:hover::after{
+width:100%;
+}
+
+.identity{
+font-size:22px;
+display:flex;
+align-items:center;
+}
+
+.logo{
+width:70px;
+}
+
+/* MAIN LAYOUT */
+
+.main-analysis{
+display:flex;
+justify-content:center;
+align-items:flex-start;
+gap:80px;
+width:90%;
+max-width:1200px;
+margin:auto;
+margin-top:70px;
+}
+
+/* IMAGE SECTION */
+
+.pic{
+width:420px;
+}
+
+.user-pic{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+border-radius:20px;
+border:2px dotted #284432;
+background:#f9e7cf;
+padding:30px;
+transition:.3s;
+}
+
+.user-pic:hover{
+border:2px solid #284432;
+}
+
+.uploaded-image{
+width:100%;
+border-radius:10px;
+}
+
+.upload-text{
+margin-top:10px;
+color:#27412e;
+}
+
+/* QUIZ CARD */
+
+.quiz-container{
+width:520px;
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 20px 50px rgba(0,0,0,0.08);
+}
+
+.quiz-header{
+text-align:center;
+}
+
+.quiz-header h2{
+color:#284432;
+margin-bottom:5px;
+}
+
+.quiz-header p{
+color:#4a5c55;
+font-size:14px;
+}
+
+.step{
+font-size:13px;
+color:#c49d50;
+margin-bottom:10px;
+}
+
+/* PROGRESS BAR */
+
+.progress-bar{
+width:100%;
+height:8px;
+background:#eee;
+border-radius:10px;
+margin:25px 0;
+}
+
+.progress{
+height:100%;
+width:0%;
+background:#c49d50;
+border-radius:10px;
+transition:.3s;
+}
+
+/* QUESTIONS */
+
+.question{
+display:none;
+}
+
+.question.active{
+display:block;
+}
+
+.question h3{
+color:#284432;
+margin-bottom:20px;
+}
+
+/* OPTIONS */
+
+.options{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+.options button{
+padding:14px;
+border-radius:12px;
+border:2px solid #284432;
+background:white;
+cursor:pointer;
+transition:.25s;
+font-weight:500;
+}
+
+.options button:hover{
+background:#f3efe7;
+}
+
+.options button.selected{
+background:#284432;
+color:white;
+}
+
+/* NAVIGATION */
+
+.quiz-navigation{
+margin-top:30px;
+display:flex;
+justify-content:space-between;
+}
+
+.quiz-navigation button{
+padding:12px 25px;
+border:none;
+border-radius:8px;
+background:#284432;
+color:white;
+cursor:pointer;
+font-weight:500;
+}
+
+.quiz-navigation button:disabled{
+opacity:.4;
+cursor:not-allowed;
+}
+
+.quiz-navigation button:hover{
+background:#1e3325;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="nav_bar">
+
+<div class="identity">
+<img class="logo" src="my_white_logo.png">
+<div>Follic AI</div>
+</div>
+
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="#how-it-works">How It Works</a></li>
+<li><a href="about.html">About</a></li>
+<!-- <li><a href="login.html">Login</a></li> -->
+</ul>
+
+</div>
+</nav>
+
+
+<div class="main-analysis">
+
+<!-- IMAGE -->
+
+<section class="pic">
+<div class="user-pic">
+<img id="userHairImage" class="uploaded-image">
+<h3 class="upload-text">Your uploaded image</h3>
+
+</div>
+</section>
+
+
+<!-- QUIZ -->
+
+<section class="questionnaire">
+
+<div class="quiz-container">
+
+<div class="quiz-header">
+<div class="step" id="step">Step 1 of 3</div>
+<h2>Tell us more about your hair</h2>
+<p>Help us generate your personalized hair intelligence report.</p>
+</div>
+
+<div class="progress-bar">
+<div class="progress"></div>
+</div>
+
+
+<!-- QUESTION 1 -->
+
+<div class="question active">
+
+<h3>What is your biggest hair concern?</h3>
+
+<div class="options">
+<button>Hair loss / thinning</button>
+<button>Dandruff / scalp issues</button>
+<button>Dry / damaged hair</button>
+<button>Low density</button>
+<button>Slow growth</button>
+<button>Styling confusion</button>
+<button>Oily scalp</button>
+</div>
+
+</div>
+
+
+<!-- QUESTION 2 -->
+
+<div class="question">
+
+<h3>Have you noticed hair shedding?</h3>
+
+<div class="options">
+<button>No</button>
+<button>Mild</button>
+<button>Moderate</button>
+<button>Severe</button>
+</div>
+
+</div>
+
+
+<!-- QUESTION 3 -->
+
+<div class="question">
+
+<h3>How would you describe your hair type?</h3>
+
+<div class="options">
+<button>Straight</button>
+<button>Wavy</button>
+<button>Curly</button>
+<button>Coily</button>
+</div>
+
+</div>
+
+
+<div class="quiz-navigation">
+<button id="prev">Previous</button>
+<button id="next" disabled>Next</button>
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<script>
+
+    const storedImage = localStorage.getItem("uploadedHairImage");
+
+if(storedImage){
+document.getElementById("userHairImage").src = storedImage;
+}
+
+const questions=document.querySelectorAll(".question");
+const nextBtn=document.getElementById("next");
+const prevBtn=document.getElementById("prev");
+const progress=document.querySelector(".progress");
+const stepText=document.getElementById("step");
+
+let current=0;
+
+const answers={};
+
+/* OPTION SELECTION */
+
+document.querySelectorAll(".options button").forEach(button=>{
+
+button.addEventListener("click",()=>{
+
+button.classList.toggle("selected");
+
+const qIndex=current;
+
+if(!answers[qIndex]){
+answers[qIndex]=[];
+}
+
+const value=button.innerText;
+
+if(answers[qIndex].includes(value)){
+answers[qIndex]=answers[qIndex].filter(v=>v!==value);
+}else{
+answers[qIndex].push(value);
+}
+
+nextBtn.disabled=false;
+
+});
+
+});
+
+
+/* UPDATE QUIZ */
+
+function updateQuiz(){
+
+questions.forEach((q,index)=>{
+
+q.classList.remove("active");
+
+if(index===current){
+q.classList.add("active");
+}
+
+});
+
+let percent=((current)/questions.length)*100;
+progress.style.width=percent+"%";
+
+stepText.innerText="Step "+(current+1)+" of "+questions.length;
+
+nextBtn.disabled=true;
+
+if(answers[current]){
+nextBtn.disabled=false;
+}
+
+}
+
+
+/* NEXT */
+
+nextBtn.onclick=()=>{
+
+if(current<questions.length-1){
+current++;
+updateQuiz();
+}else{
+
+console.log("User answers:",answers);
+
+alert("Hair profile submitted!");
+
+}
+
+}
+
+
+/* PREVIOUS */
+
+prevBtn.onclick=()=>{
+
+if(current>0){
+current--;
+updateQuiz();
+}
+
+}
+
+updateQuiz();
+
+</script>
+
+</body>
+</html>

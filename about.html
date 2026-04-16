@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Folix AI</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter&family=Roboto+Slab&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary-green: #284432;
+  --deep-green: #254332;
+  --accent-gold: #c49d50;
+  --background-main: #fcf5ec;
+  --background-soft: #f8f6ee;
+  --text-heading: #27412e;
+  --text-body: #4a5c55;
+}
+
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: var(--background-main);
+}
+
+/* NAVBAR */
+nav {
+  background: linear-gradient(90deg, #284432, #1f3527);
+  padding: 15px 0;
+}
+
+.nav_container {
+  width: 85%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo_area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo_area img {
+  width: 55px;
+}
+
+.logo_area h3 {
+  color: white;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+ul a {
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+ul a:hover {
+  color: var(--accent-gold);
+}
+
+/* HERO */
+.hero {
+  padding: 110px 20px 90px;
+  text-align: center;
+  background:
+  linear-gradient(120deg, rgba(252,245,236,0.9), rgba(252,245,236,0.9)),
+  radial-gradient(circle at 20% 20%, #e7dcc9, transparent 40%);
+}
+
+.hero img {
+  width: 70px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: "Roboto Slab", serif;
+  font-size: 48px;
+  color: var(--text-heading);
+  max-width: 800px;
+  margin: auto;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 20px auto;
+  color: var(--text-body);
+  font-size: 18px;
+}
+
+/* SECTIONS */
+.section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.section h2 {
+  font-family: "Roboto Slab", serif;
+  font-size: 34px;
+  color: var(--text-heading);
+}
+
+.section p {
+  max-width: 750px;
+  margin: auto;
+  line-height: 1.8;
+  font-size: 18px;
+  color: var(--text-body);
+}
+
+/* PREMIUM CARD */
+.card {
+  max-width: 850px;
+  margin: 50px auto;
+  padding: 50px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+/* FUTURE SECTION */
+.future {
+  background: var(--background-soft);
+}
+
+/* CTA */
+.cta {
+  padding: 90px 20px;
+  text-align: center;
+}
+
+.cta h2 {
+  font-family: "Roboto Slab", serif;
+  font-size: 38px;
+  color: var(--text-heading);
+}
+
+.cta button {
+  margin-top: 25px;
+  background: linear-gradient(90deg, #284432, #3b6a4f);
+  color: white;
+  padding: 16px 60px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cta button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(40,68,50,0.25);
+}
+
+.section-future{
+  max-width: 700px;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav_container">
+    <div class="logo_area">
+      <img src="my_white_logo.png">
+      <h3>Folix AI</h3>
+    </div>
+
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">How It Works</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="my_logo.png">
+  <h1>Reinventing Hair Confidence Through Artificial Intelligence</h1>
+  <p>
+    Folix AI is building the future of personalised hair care, combining technology, science, and beauty to help individuals discover their best self with confidence.
+  </p>
+</section>
+
+<!-- WHY -->
+<section class="section">
+  <div class="card">
+    <h2>Why Folix AI Exists</h2>
+    <p>
+      Hair is deeply personal, yet most people receive generic advice. At Folix AI, we believe every individual deserves personalised insights tailored to their unique hair, face, and lifestyle. Our mission is to remove confusion and replace it with intelligent guidance.
+    </p>
+  </div>
+</section>
+
+<!-- SCIENCE -->
+<section class="section">
+  <div class="card">
+    <h2>Powered by AI and Science</h2>
+    <p>
+      Using advanced computer vision, machine learning, and dermatology-inspired insights, Folix AI analyses hair structure, density, health, and compatibility with styles. We aim to bridge the gap between beauty and technology.
+    </p>
+  </div>
+</section>
+
+<!-- FUTURE -->
+<section class="section-future">
+  <h2>Our Vision for the Future</h2>
+  <p>
+    We are building a global platform where personalisation meets beauty. From hair analysis to routine recommendations, styling, and health tracking, Folix AI will become your intelligent hair companion.
+  </p>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Start Your Personalised Hair Journey Today</h2>
+  <button onclick="location.href='index.html'">Get Started</button>
+</section>
+
+<section class="founder">
+  <h2>Fo</h2>
+</section>
+
+
+</body>
+</html>

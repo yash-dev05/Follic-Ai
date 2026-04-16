@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | Folix AI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playwrite+AU+TAS:wght@100..400&family=Playwrite+NZ+Basic:wght@100..400&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-green: #284432;
+      --deep-green: #254332;
+      --accent-gold: #c49d50;
+      --soft-green: #4a5c55;
+      --background-main: #fcf5ec;
+      --background-soft: #f8f6ee;
+      --background-gradient: linear-gradient(180deg, #fcf5ec, #efe6d9);
+      --text-heading: #27412e;
+      --text-body: #4a5c55;
+      --text-muted: #7a8a84;
+      --success: #3a8f5b;
+      --error: #c94b4b;
+      --border: #aeb9ac;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      background: var(--background-gradient);
+      min-height: 100vh;
+    }
+
+    .form_area {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: var(--background-soft);
+      height: auto;
+      width: auto;
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 3px 4px 0px 1px var(--accent-gold);
+      padding: 20px 30px;
+    }
+
+    .title {
+      color: var(--text-heading);
+      font-weight: 700;
+      font-size: 1.5em;
+      margin-top: 10px;
+      font-family: "Roboto Slab", serif;
+    }
+
+    .login-logo {
+      width: 60px;
+      margin-top: 20px;
+    }
+
+    .sub_title {
+      font-weight: 600;
+      margin: 5px 0;
+      color: var(--text-body);
+      font-family: "Roboto Slab", serif;
+    }
+
+    .form_group {
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      margin: 10px;
+    }
+
+    .form_style {
+      outline: none;
+      border: 2px solid var(--deep-green);
+      box-shadow: 3px 4px 0px 1px var(--accent-gold);
+      width: 290px;
+      padding: 12px 10px;
+      border-radius: 4px;
+      font-size: 15px;
+      background-color: var(--background-main);
+      color: var(--text-body);
+    }
+
+    .form_style:focus, .btn:focus {
+      transform: translateY(4px);
+      box-shadow: 1px 2px 0px 0px var(--accent-gold);
+    }
+
+    .btn {
+      padding: 15px;
+      margin: 25px 0px;
+      width: 290px;
+      font-size: 15px;
+      background: var(--primary-green);
+      color: var(--background-main);
+      border-radius: 10px;
+      font-weight: 800;
+      box-shadow: 3px 3px 0px 0px var(--accent-gold);
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: var(--deep-green);
+      opacity: .95;
+    }
+
+    .link {
+      font-weight: 800;
+      color: var(--primary-green);
+      padding: 5px;
+      text-decoration: none;
+    }
+
+    .link:hover {
+      color: var(--accent-gold);
+    }
+
+    .back-home {
+      display: block;
+      margin-top: 10px;
+      color: var(--soft-green);
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .back-home:hover {
+      color: var(--accent-gold);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form_area">
+      <img src="my_logo.png" class="login-logo">
+      <p class="title">Create Your Account</p>
+
+      <form>
+        <div class="form_group">
+          <label class="sub_title" for="name">Full Name</label>
+          <input placeholder="Enter your full name" id="name" class="form_style" type="text" required>
+        </div>
+
+        <div class="form_group">
+          <label class="sub_title" for="email">Email</label>
+          <input placeholder="Enter your email" id="email" class="form_style" type="email" required>
+        </div>
+
+        <div class="form_group">
+          <label class="sub_title" for="password">Password</label>
+          <input placeholder="Create a password" id="password" class="form_style" type="password" required>
+        </div>
+
+        <div class="form_group">
+          <label class="sub_title" for="confirm-password">Confirm Password</label>
+          <input placeholder="Re-enter your password" id="confirm-password" class="form_style" type="password" required>
+        </div>
+
+        <button class="btn" type="submit">SIGN UP</button>
+      </form>
+
+      <a href="index.html" class="back-home">← Back to Home</a>
+      <p>Already have an account? <a class="link" href="login.html">Login Here!</a></p>
+    </div>
+  </div>
+</body>
+</html>

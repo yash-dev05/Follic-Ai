@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Follic Ai</title>
+
+<link rel="icon" type="image/png" sizes="32*32" href="my_logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playwrite+AU+TAS:wght@100..400&family=Playwrite+NZ+Basic:wght@100..400&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+
+
+    <style>
+        /*
+            Brand variables:
+            Central place for core colors used by effects/layout.
+        */
+        :root {
+            --brand-cream: rgb(252, 245, 236);
+            --brand-green-dark: #284432;
+            --brand-green-text: #27412e;
+            --brand-gold: #c49d50;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            background-color:
+                rgba(252, 245, 236);
+            font-family: "Inter", sans-serif;
+            overflow-x: hidden;
+        }
+
+        nav {
+            background-color: #284432;
+            color: white;
+            display: flex;
+            justify-content: center;
+            /* center nav_bar horizontally */
+            align-items: center;
+            /* center nav_bar vertically */
+            height: 75px;
+
+        }
+
+        .nav_bar {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            /* optional: vertically center items */
+            justify-content: space-between;
+            /* optional: spread items apart */
+            width: 80%;
+            max-width: 1200px;
+            margin-bottom: 0px;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            /* remove bullets */
+            margin: 0;
+            padding: 0;
+            font-size: 17px;
+        }
+
+
+        ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        ul li {
+            position: relative;
+            cursor: pointer;
+            margin: 0 15px;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        /* subtle color change */
+        ul li:hover {
+            color: #fdfdb0cf;
+        }
+
+        /* premium underline animation */
+        ul li::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: #c49d50;
+            transition: width 0.3s ease;
+        }
+
+        ul li:hover::after {
+            width: 100%;
+        }
+
+        .identity {
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            /* vertically align text and logo */
+            gap: 0px;
+            /* space between name and logo */
+        }
+
+        .logo {
+            width: 70px;
+            /* adjust size as needed */
+            height: auto;
+            cursor: pointer;
+        }
+
+        .hero {
+            display: flex;
+            /* height: 100vh; */
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px 20px 20px;
+            overflow: hidden;
+        }
+
+        /*
+            Live background glow in hero section.
+            Uses two soft animated circles in brand colors.
+        */
+        .hero::before,
+        .hero::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(1px);
+            z-index: 0;
+            opacity: 0.3;
+            animation: drift 9s ease-in-out infinite alternate;
+        }
+
+        .hero::before {
+            width: 240px;
+            height: 240px;
+            left: -80px;
+            top: 30px;
+            background: radial-gradient(circle, rgba(196, 157, 80, 0.3), transparent 70%);
+        }
+
+        .hero::after {
+            width: 300px;
+            height: 300px;
+            right: -120px;
+            top: 120px;
+            background: radial-gradient(circle, rgba(40, 68, 50, 0.22), transparent 70%);
+            animation-duration: 11s;
+        }
+
+        /* Keep hero text/cards above decorative glows. */
+        .hero>* {
+            position: relative;
+            z-index: 20;
+        }
+
+        @keyframes drift {
+            from {
+                transform: translateY(-8px);
+            }
+
+            to {
+                transform: translateY(12px);
+            }
+        }
+
+        h1 {
+            font-size: 48px;
+            max-width: 1200px;
+            font-weight: 700;
+            margin: 0 auto;
+            font-family: "Roboto Slab", serif;
+            text-align: center;
+
+            /* Base luxury color */
+            color: #27412e;
+
+            /* Subtle premium shine */
+            background: linear-gradient(110deg,
+                    #27412e 0%,
+                    #27412e 40%,
+                    #e8d7a8 48%,
+                    #c49d50 50%,
+                    #e8d7a8 52%,
+                    #27412e 60%,
+                    #27412e 100%);
+
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            animation: premiumShine 7s linear infinite;
+        }
+
+        @keyframes premiumShine {
+            from {
+                background-position: -200% 0;
+            }
+
+            to {
+                background-position: 200% 0;
+            }
+        }
+
+        .hero-content_subheading {
+            font-size: 20px;
+            /* margin-bottom: 20px; */
+            margin: 20px;
+            color: #253431;
+
+
+        }
+
+        .box {
+            min-width: 800px;
+            border: 2px solid rgba(174, 185, 172);
+            border-radius: 20px;
+            align-items: center;
+            background-color: #f8f6ee;
+            padding: 8px;
+
+        }
+
+        .upload-box {
+            padding-bottom: 35px;
+
+
+            background-color: #f8f6ee;
+            border: 2px dotted rgba(174, 185, 172);
+            border-radius: 20px;
+        }
+
+        .upload-hero {
+            width: 160px;
+
+        }
+
+        h2 {
+            margin-top: 0px;
+        }
+
+        #drop-area {
+            cursor: pointer;
+        }
+
+        #drop-area.dragging {
+            border: 2px solid #c49d50;
+            background: #fff6e5;
+        }
+
+        .upload-btn {
+            background-color: #c49d50;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 20px;
+            border: none;
+            font-size: 18px;
+            transition: all 0.4s;
+            cursor: pointer;
+            border: 1px solid #e8e8e8;
+            transition: all 0.3s;
+            box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+        }
+
+        /* Premium hover */
+        .upload-btn:hover {
+            /* background-color: #d4ad60; /* slightly brighter gold */
+            background-color: #d4ad60;
+            transform: translateY(-3px);
+            box-shadow:
+                0 8px 18px rgba(196, 157, 80, 0.35),
+                0 0 12px rgba(40, 68, 50, 0.3);
+        }
+
+        /* Click effect */
+        .upload-btn:active {
+            transform: translateY(0px);
+            box-shadow: 0 4px 10px rgba(196, 157, 80, 0.2);
+        }
+
+        /* Hide the default file input */
+        #file {
+            display: none;
+        }
+
+
+        .trust {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #284432;
+            text-decoration: underline;
+        }
+
+        .steps-preview {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+            font-size: 15px;
+            color: #284432;
+            font-weight: 500;
+        }
+
+        .arrow {
+            opacity: 0.6;
+        }
+
+
+
+        .how-it-works {
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+            text-align: center;
+            margin: 0;
+            gap: 0px;
+
+
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .section-title h2 {
+            font-family: "Roboto Slab", serif;
+            font-weight: 700;
+            font-size: 35px;
+            color: #27412e;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .line {
+            flex: 1;
+            height: 1.5px;
+            max-width: 250px;
+            background: linear-gradient(to right, transparent, #c49d50d9, transparent);
+        }
+
+        .working-process {
+            width: 800px;
+            margin-top: 0px;
+        }
+
+        .line2 {
+            width: 60%;
+            height: 3px;
+            opacity: 0.9;
+            margin: 30px auto;
+            background: linear-gradient(to right,
+                    transparent,
+                    rgba(196, 157, 80, 0.6),
+                    transparent);
+        }
+
+
+
+
+
+
+        .cta-section {
+            padding: 80px 20px;
+            background: linear-gradient(180deg,
+                    rgba(252, 245, 236, 0.8),
+                    rgba(232, 221, 204, 0.6));
+            display: flex;
+            justify-content: center;
+        }
+
+        .cta-container {
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .brand-block {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .cta-logo {
+            width: 55px;
+            display: block;
+            transform: translateY(2px);
+        }
+
+        .cta-brand {
+            font-size: 26px;
+            font-weight: 600;
+            color: #254332;
+            line-height: 1;
+        }
+
+        .cta-heading {
+            font-size: 34px;
+            font-family: "Roboto Slab", serif;
+            color: #27412e;
+            margin-bottom: 15px;
+        }
+
+        .cta-sub {
+            font-size: 18px;
+            color: #4a5c55;
+            margin-bottom: 30px;
+        }
+
+        .cta-btn {
+            text-decoration: none;
+            color: inherit;
+            background: linear-gradient(135deg, #254332, #3a6b4e);
+            color: white;
+            padding: 16px 60px;
+            font-size: 20px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(37, 67, 50, 0.35);
+        }
+
+        .cta-btn:active {
+            transform: translateY(0px);
+            box-shadow: 0 4px 10px rgba(196, 157, 80, 0.2);
+        }
+
+        .brand-block:hover .cta-logo {
+            transform: translateY(2px) scale(1.05);
+        }
+
+
+        /* ===== FOLIX FOOTER ===== */
+
+        .folix-footer {
+            /*
+                Normal footer flow:
+                footer appears only when user scrolls to the page bottom.
+            */
+            position: relative;
+            margin-top: 120px;
+            background: linear-gradient(180deg, #2b4a38 0%, #1f3a2d 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        /* Front wave layer (brighter than footer so movement is visible). */
+        .folix-wave {
+            position: absolute;
+            top: -126px;
+            width: 100%;
+            line-height: 0;
+            opacity: 1;
+        }
+
+        .folix-wave svg {
+            width: 100%;
+            height: 130px;
+            animation: folixWave 8s ease-in-out infinite alternate;
+        }
+
+        /* Back wave layer: slower and lighter for depth effect. */
+        .folix-wave.wave-back {
+            top: -118px;
+            opacity: 0.65;
+        }
+
+        .folix-wave.wave-back svg {
+            animation-duration: 13s;
+            animation-direction: alternate-reverse;
+        }
+
+        @keyframes folixWave {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-40px);
+            }
+        }
+
+        /* Content */
+        .folix-footer-content {
+            max-width: 1200px;
+            margin: auto;
+            padding: 138px 20px 36px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+        }
+
+        /* Brand */
+        .folix-footer-brand img {
+            width: 55px;
+            margin-bottom: 10px;
+        }
+
+        .folix-footer-brand h3 {
+            margin: 0;
+        }
+
+        .folix-footer-brand p {
+            color: #cfdad3;
+            line-height: 1.6;
+        }
+
+        /* Links */
+        .folix-footer-links h4 {
+            color: #c49d50;
+            margin-bottom: 8px;
+        }
+
+        .folix-footer-links a {
+            display: block;
+            color: #cfdad3;
+            text-decoration: none;
+            margin: 6px 0;
+            transition: 0.3s;
+        }
+
+        .folix-footer-links a:hover {
+            color: #c49d50;
+            transform: translateX(6px);
+        }
+
+        /* CTA */
+        .folix-footer-cta h4 {
+            color: #c49d50;
+        }
+
+        .folix-footer-cta button {
+            margin-top: 10px;
+            background: linear-gradient(90deg, #c49d50, #e4c47c);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .folix-footer-cta button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(196, 157, 80, 0.35);
+        }
+
+        /* Bottom */
+        .folix-footer-bottom {
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #cfdad3;
+        }
+
+        /*
+            Scroll reveal helper:
+            .reveal starts hidden, .show is added by JS when in viewport.
+        */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 700ms ease, transform 700ms ease;
+            will-change: opacity, transform;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Subtle CTA pulse for a "live" feeling. */
+        .cta-btn {
+            animation: ctaPulse 3.2s ease-in-out infinite;
+        }
+
+        @keyframes ctaPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 67, 50, 0.14);
+            }
+
+            50% {
+                box-shadow: 0 0 0 12px rgba(37, 67, 50, 0);
+            }
+        }
+
+        /* Respect reduced-motion accessibility preference. */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* Responsive fixes for large card widths + larger fixed footer on small screens. */
+        @media (max-width: 900px) {
+            .box,
+            .working-process {
+                min-width: 0;
+                width: min(94vw, 800px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav_bar">
+            <div class="identity">
+                <img class="logo" src="my_white_logo.png" alt="company_whit_logo">
+                <div class="name">Follic Ai</div>
+            </div>
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="hero reveal">
+        <div class="hero-content reveal">
+            <h1>Your hair. Decoded</h1>
+            <p class="hero-content_subheading">Upload your photo and let AI recommend the perfect look for you.</p>
+
+        </div>
+        <div class="box reveal">
+            <div class="upload-box reveal" id="drop-area">
+                <img class="upload-hero" src="upload-hero.png" alt="upload">
+                <h2>Upload Your Photo</h2>
+                <!-- <button class="upload-btn">Drag & Drop or browse</button> -->
+                <input type="file" id="fileInput" accept="image/*" hidden>
+
+                <button class="upload-btn" id="browseBtn">
+                    Drag & Drop or Browse
+                </button>
+
+            </div>
+        </div>
+
+
+        <div class="trust">
+            <span>AI Powered Analysis</span>
+            <span>10,000+ Users</span>
+            <span>Private & Secure</span>
+        </div>
+        <div class="steps-preview">
+            <div class="arrow">|</div>
+            <div>Upload</div>
+            <div class="arrow">&rarr;</div>
+            <div>AI</div>
+            <div class="arrow">&rarr;</div>
+            <div>Results</div>
+            <div class="arrow">|</div>
+        </div>
+    </section>
+    <section id="how-it-works" class="how-it-works reveal">
+        <div class="section-title reveal">
+            <span class="line"></span>
+            <h2>How It Works</h2>
+            <span class="line"></span>
+        </div>
+        <img src="working.png" alt="platform working" class="working-process reveal">
+        <div class="line2"></div>
+    </section>
+
+
+    <section class="cta-section reveal">
+        <div class="cta-container reveal">
+
+            <div class="brand-block reveal">
+                <img src="my_logo.png" alt="Folix AI" class="cta-logo">
+                <span class="cta-brand">Follic Ai</span>
+            </div>
+
+            <h2 class="cta-heading">
+                Boost Your Confidence With Personalised Hair Insights
+            </h2>
+
+            <p class="cta-sub">
+                Discover your perfect hairstyle and improve your hair health with AI-powered recommendations.
+            </p>
+
+            <button class="cta-btn" onclick="location.href='sign-up.html'">Get Started</button>
+
+
+        </div>
+    </section>
+
+
+    <footer class="folix-footer">
+
+        <!-- Back wave layer (slower animation adds depth/parallax feel) -->
+        <div class="folix-wave wave-back">
+            <svg viewBox="0 0 1440 320" aria-hidden="true">
+                <path fill="#9fbaa8"
+                    d="M0,192L90,197.3C180,203,360,213,540,218.7C720,224,900,224,1080,202.7C1260,181,1440,139,1530,117.3L1620,96L1620,320L0,320Z">
+                </path>
+            </svg>
+        </div>
+
+        <!-- SVG wave -->
+        <div class="folix-wave">
+            <svg viewBox="0 0 1440 320">
+                <path fill="#d8e3da"
+                    d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,144C1120,139,1280,181,1360,202.7L1440,224L1440,320L0,320Z">
+                </path>
+            </svg>
+        </div>
+
+        <div class="folix-footer-content">
+
+            <div class="folix-footer-brand">
+                <img src="my_logo.png" alt="Folix AI">
+                <h3>Folix AI</h3>
+                <p>Reinventing hair confidence through AI-powered personalisation.</p>
+            </div>
+
+            <div class="folix-footer-links">
+                <h4>Company</h4>
+                <a href="about.html">About</a>
+                <a href="#">How it works</a>
+                <a href="#">Careers</a>
+            </div>
+
+            <div class="folix-footer-links">
+                <h4>Legal</h4>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+
+            <div class="folix-footer-cta">
+                <h4>Start your journey</h4>
+                <button onclick="location.href='index.html'">Get Started</button>
+            </div>
+
+        </div>
+
+        <div class="folix-footer-bottom">
+            (c) 2026 Folix AI. All rights reserved.
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        const dropArea = document.getElementById("drop-area");
+        const fileInput = document.getElementById("fileInput");
+        const browseBtn = document.getElementById("browseBtn");
+
+        /* open file browser */
+
+        browseBtn.addEventListener("click", () => {
+            fileInput.click();
+        });
+
+        /* file selected */
+
+        fileInput.addEventListener("change", handleFile);
+
+        /* drag events */
+
+        dropArea.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            dropArea.classList.add("dragging");
+        });
+
+        dropArea.addEventListener("dragleave", () => {
+            dropArea.classList.remove("dragging");
+        });
+
+        dropArea.addEventListener("drop", (e) => {
+            e.preventDefault();
+            dropArea.classList.remove("dragging");
+
+            const file = e.dataTransfer.files[0];
+
+            handleFile({ target: { files: [file] } });
+
+        });
+
+        /* handle upload */
+
+        function handleFile(e) {
+
+            const file = e.target.files[0];
+
+            if (!file) return;
+
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+
+                /* store image in browser */
+
+                localStorage.setItem("uploadedHairImage", event.target.result);
+
+                /* go to questionnaire */
+
+                window.location.href = "question-page.html";
+
+            };
+
+            reader.readAsDataURL(file);
+
+        }
+
+        /*
+            Scroll reveal:
+            - Watches every `.reveal` element.
+            - Adds `.show` when element enters viewport.
+            - Stops observing revealed elements for better performance.
+        */
+        const revealElements = document.querySelectorAll(".reveal");
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: "0px 0px -40px 0px"
+        });
+
+        revealElements.forEach((el) => revealObserver.observe(el));
+
+    </script>
+
+
+</body>
+
+</html>
+
+
